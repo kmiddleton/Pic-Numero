@@ -42,8 +42,8 @@ def block_proc(A, blockSize, blockFunc):
     if(yStop % blockSize[1] != 0):
         yStop = int(yStop/blockSize[1]) * blockSize[1]
 
-    for x in xrange(xStart, xStop, blockSize[0]):
-        for y in xrange(yStart, yStop, blockSize[1]):
+    for x in range(xStart, xStop, blockSize[0]):
+        for y in range(yStart, yStop, blockSize[1]):
             block = A[y:y+blockSize[1], x:x+blockSize[0]]
             blockFunc(block)
 
@@ -58,7 +58,7 @@ def unserialize(filename):
     '''Return object from file'''
     try:
         f = open(filename, 'rb')
-        obj = pickle.load(f)
+        obj = pickle.load(f, encoding='latin1')
         f.close()
         return obj
     except:
